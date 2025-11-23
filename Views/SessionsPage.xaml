@@ -1,0 +1,68 @@
+<UserControl x:Class="PhysioCenter.Wpf.Views.SessionsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             FlowDirection="RightToLeft">
+
+    <Grid Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- العنوان + زر الإضافة -->
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="الجلسات العلاجية"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="White"/>
+
+            <Button Content="إضافة جلسة"
+                    Margin="20,0,0,0"
+                    Padding="20,8"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Click="AddSession_Click"/>
+        </StackPanel>
+
+        <!-- جدول الجلسات -->
+        <Border Grid.Row="1"
+                Style="{StaticResource GlassCardStyle}"
+                Margin="0,20,0,0">
+
+            <DataGrid x:Name="SessionsGrid"
+                      AutoGenerateColumns="False"
+                      Background="#22FFFFFF"
+                      Foreground="White"
+                      HeadersVisibility="Column"
+                      IsReadOnly="True">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="التاريخ"
+                                        Binding="{Binding SessionDate, StringFormat=yyyy/MM/dd HH:mm}"
+                                        Width="160"/>
+
+                    <DataGridTextColumn Header="المراجع"
+                                        Binding="{Binding Patient.FullName}"
+                                        Width="*"/>
+
+                    <DataGridTextColumn Header="المعالج"
+                                        Binding="{Binding TherapistName}"
+                                        Width="*"/>
+
+                    <DataGridTextColumn Header="مستوى التحسن"
+                                        Binding="{Binding ImprovementLevel}"
+                                        Width="140"/>
+
+                    <DataGridTextColumn Header="التقييم"
+                                        Binding="{Binding ShortEvaluation}"
+                                        Width="200"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Border>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,121 @@
+<UserControl x:Class="PhysioCenter.Wpf.Views.DashboardPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             FlowDirection="RightToLeft">
+
+    <Grid Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="300"/>
+        </Grid.RowDefinitions>
+
+        <!-- عنوان -->
+        <TextBlock Text="لوحة التحكم"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   Margin="0,0,0,20"/>
+
+        <!-- البطاقات -->
+        <UniformGrid Grid.Row="1"
+                     Columns="4"
+                     Margin="0,0,0,20">
+
+            <Border Style="{StaticResource GlassCardStyle}"
+                    Margin="8">
+                <StackPanel>
+                    <TextBlock Text="عدد المراجعين"
+                               Foreground="White"
+                               FontSize="16"/>
+                    <TextBlock x:Name="PatientsCountText"
+                               Text="0"
+                               FontSize="34"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource GlassCardStyle}"
+                    Margin="8">
+                <StackPanel>
+                    <TextBlock Text="مواعيد اليوم"
+                               Foreground="White"
+                               FontSize="16"/>
+                    <TextBlock x:Name="TodayAppointmentsText"
+                               Text="0"
+                               FontSize="34"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource GlassCardStyle}"
+                    Margin="8">
+                <StackPanel>
+                    <TextBlock Text="الجلسات المكتملة"
+                               Foreground="White"
+                               FontSize="16"/>
+                    <TextBlock x:Name="CompletedSessionsText"
+                               Text="0"
+                               FontSize="34"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource GlassCardStyle}"
+                    Margin="8">
+                <StackPanel>
+                    <TextBlock Text="المعالجون النشطون"
+                               Foreground="White"
+                               FontSize="16"/>
+                    <TextBlock x:Name="TherapistsCountText"
+                               Text="0"
+                               FontSize="34"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+                </StackPanel>
+            </Border>
+
+        </UniformGrid>
+
+        <!-- جدول أقرب المواعيد -->
+        <Border Grid.Row="2"
+                Style="{StaticResource GlassCardStyle}">
+            <StackPanel>
+                <TextBlock Text="أقرب 5 مواعيد"
+                           FontSize="20"
+                           Foreground="White"
+                           Margin="0,0,0,10"/>
+
+                <DataGrid x:Name="UpcomingAppointmentsGrid"
+                          AutoGenerateColumns="False"
+                          Background="#22FFFFFF"
+                          Foreground="White"
+                          HeadersVisibility="Column">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="المراجع"
+                                            Binding="{Binding PatientName}"
+                                            Width="*"/>
+                        <DataGridTextColumn Header="المعالج"
+                                            Binding="{Binding TherapistName}"
+                                            Width="*"/>
+                        <DataGridTextColumn Header="الوقت"
+                                            Binding="{Binding Date}"
+                                            Width="*"/>
+                        <DataGridTextColumn Header="الحالة"
+                                            Binding="{Binding Status}"
+                                            Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</UserControl>

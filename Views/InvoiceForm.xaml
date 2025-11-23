@@ -1,0 +1,90 @@
+<Window x:Class="PhysioCenter.Wpf.Views.InvoiceForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="إنشاء فاتورة"
+        WindowStartupLocation="CenterScreen"
+        Width="700"
+        Height="700"
+        Background="#FF0D1524"
+        FlowDirection="RightToLeft">
+
+    <Border Style="{StaticResource GlassCardStyle}"
+            Margin="20">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+
+                <TextBlock Text="إنشاء فاتورة"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Margin="0,0,0,20"/>
+
+                <!-- اختيار المراجع -->
+                <TextBlock Text="المراجع"
+                           Foreground="White"/>
+                <ComboBox x:Name="PatientBox"
+                          Margin="0,0,0,10"/>
+
+                <!-- اختيار الخدمة -->
+                <TextBlock Text="إضافة خدمة"
+                           Foreground="White"/>
+                <StackPanel Orientation="Horizontal">
+
+                    <ComboBox x:Name="ServiceBox"
+                              Width="200"/>
+
+                    <TextBox x:Name="ServicePriceBox"
+                             Width="120"
+                             Margin="10,0"
+                             IsEnabled="False"/>
+
+                    <Button Content="إضافة"
+                            Width="100"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Click="AddServiceItem_Click"/>
+                </StackPanel>
+
+                <Separator Margin="0,20"/>
+
+                <!-- جدول الخدمات -->
+                <DataGrid x:Name="ItemsGrid"
+                          AutoGenerateColumns="False"
+                          Background="#22FFFFFF"
+                          Foreground="White"
+                          Margin="0,10,0,10">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="الخدمة"
+                                            Binding="{Binding Name}"
+                                            Width="*"/>
+
+                        <DataGridTextColumn Header="السعر"
+                                            Binding="{Binding Price}"
+                                            Width="150"/>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+                <Separator Margin="0,20"/>
+
+                <!-- الإجمالي -->
+                <TextBlock Text="الإجمالي:"
+                           Foreground="White"
+                           FontSize="18"/>
+                <TextBox x:Name="TotalBox"
+                         Margin="0,5,0,20"
+                         IsEnabled="False"/>
+
+                <Button Content="حفظ الفاتورة"
+                        Height="40"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Click="Save_Click"/>
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </Border>
+
+</Window>

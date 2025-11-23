@@ -1,0 +1,73 @@
+<Window x:Class="PhysioCenter.Wpf.Views.SessionForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="إضافة جلسة علاجية"
+        WindowStartupLocation="CenterScreen"
+        Width="520"
+        Height="620"
+        Background="#FF0D1524"
+        FlowDirection="RightToLeft">
+
+    <Border Style="{StaticResource GlassCardStyle}"
+            Margin="20">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+
+                <TextBlock Text="إضافة جلسة علاجية"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Margin="0,0,0,20"/>
+
+                <TextBlock Text="المراجع"
+                           Foreground="White"/>
+                <ComboBox x:Name="PatientBox"
+                          SelectionChanged="PatientBox_SelectionChanged"
+                          Margin="0,0,0,10"/>
+
+                <TextBlock Text="الموعد المرتبط"
+                           Foreground="White"/>
+                <ComboBox x:Name="AppointmentBox"
+                          Margin="0,0,0,10"/>
+
+                <TextBlock Text="تاريخ الجلسة"
+                           Foreground="White"/>
+                <DatePicker x:Name="DateBox"
+                            Margin="0,0,0,10"/>
+
+                <TextBlock Text="الوقت"
+                           Foreground="White"/>
+                <TextBox x:Name="TimeBox"
+                         Margin="0,0,0,10"
+                         ToolTip="مثال: 15:00"/>
+
+                <TextBlock Text="مستوى التحسن (0 - 100)"
+                           Foreground="White"/>
+                <TextBox x:Name="ImprovementBox"
+                         Margin="0,0,0,10"/>
+
+                <TextBlock Text="التقييم"
+                           Foreground="White"/>
+                <TextBox x:Name="EvaluationBox"
+                         Height="80"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         Margin="0,0,0,10"/>
+
+                <TextBlock Text="الخطة العلاجية"
+                           Foreground="White"/>
+                <TextBox x:Name="PlanBox"
+                         Height="80"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         Margin="0,0,0,20"/>
+
+                <Button Content="حفظ الجلسة"
+                        Height="40"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Click="Save_Click"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Border>
+</Window>

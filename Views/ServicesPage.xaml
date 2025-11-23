@@ -1,0 +1,57 @@
+<UserControl x:Class="PhysioCenter.Wpf.Views.ServicesPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             FlowDirection="RightToLeft">
+
+    <Grid Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- العنوان + زر الإضافة -->
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="الخدمات"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="White"/>
+
+            <Button Content="إضافة خدمة"
+                    Margin="20,0,0,0"
+                    Padding="20,8"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Click="AddService_Click"/>
+        </StackPanel>
+
+        <!-- جدول الخدمات -->
+        <Border Grid.Row="1"
+                Style="{StaticResource GlassCardStyle}"
+                Margin="0,20,0,0">
+
+            <DataGrid x:Name="ServicesGrid"
+                      AutoGenerateColumns="False"
+                      Background="#22FFFFFF"
+                      Foreground="White"
+                      HeadersVisibility="Column"
+                      IsReadOnly="True">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="اسم الخدمة"
+                                        Binding="{Binding Name}"
+                                        Width="*"/>
+
+                    <DataGridTextColumn Header="السعر"
+                                        Binding="{Binding Price}"
+                                        Width="150"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Border>
+
+    </Grid>
+
+</UserControl>

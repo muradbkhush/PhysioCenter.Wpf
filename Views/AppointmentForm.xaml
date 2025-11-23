@@ -1,0 +1,72 @@
+<Window x:Class="PhysioCenter.Wpf.Views.AppointmentForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="إدارة موعد"
+        Height="420"
+        Width="480"
+        WindowStartupLocation="CenterScreen"
+        Background="#FF1A1F2A"
+        FlowDirection="RightToLeft"
+        ResizeMode="NoResize">
+
+    <Grid Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- التاريخ -->
+        <TextBlock Text="تاريخ الموعد"
+                   Foreground="White"/>
+        <DatePicker x:Name="DatePicker"
+                    Grid.Row="0"
+                    Margin="0,26,0,10"/>
+
+        <!-- المراجع -->
+        <TextBlock Text="المراجع"
+                   Grid.Row="1"
+                   Foreground="White"/>
+        <ComboBox x:Name="PatientCombo"
+                  Grid.Row="1"
+                  Margin="0,26,0,10"
+                  Height="32"/>
+
+        <!-- المعالج -->
+        <TextBlock Text="المعالج"
+                   Grid.Row="2"
+                   Foreground="White"/>
+        <ComboBox x:Name="TherapistCombo"
+                  Grid.Row="2"
+                  Margin="0,26,0,10"
+                  Height="32"/>
+
+        <!-- حالة الموعد -->
+        <TextBlock Text="حالة الموعد"
+                   Grid.Row="3"
+                   Foreground="White"/>
+        <ComboBox x:Name="StatusCombo"
+                  Grid.Row="3"
+                  Margin="0,26,0,10"
+                  Height="32">
+            <ComboBoxItem Content="Scheduled"/>
+            <ComboBoxItem Content="Completed"/>
+            <ComboBoxItem Content="Cancelled"/>
+            <ComboBoxItem Content="NoShow"/>
+        </ComboBox>
+
+        <!-- زر حفظ -->
+        <Button Grid.Row="4"
+                Content="حفظ"
+                Height="42"
+                Style="{StaticResource PrimaryButtonStyle}"
+                HorizontalAlignment="Right"
+                Width="140"
+                Margin="0,20,0,0"
+                Click="Save_Click"/>
+
+    </Grid>
+</Window>

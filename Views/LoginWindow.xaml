@@ -1,0 +1,132 @@
+<Window x:Class="PhysioCenter.Wpf.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PhysioCenter – Login"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Height="720"
+        Width="1100"
+        Background="#1F6493"
+        FlowDirection="RightToLeft">
+
+    <Grid>
+
+        <!-- خلفية -->
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/login-bg.png"
+                        Stretch="UniformToFill"
+                        AlignmentX="Center"
+                        AlignmentY="Center"
+                        Opacity="0.45"/>
+        </Grid.Background>
+
+        <Rectangle Fill="#000F"/>
+
+        <!-- بطاقة -->
+        <Border Style="{StaticResource GlassCardStyle}"
+                Margin="40">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="480"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- القسم الترحيبي -->
+                <StackPanel Margin="30"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="! Welcome"
+                               FontSize="40"
+                               FontWeight="Bold"
+                               Foreground="#1F6493"/>
+
+                    <Rectangle Height="4"
+                               Margin="0,8,0,16"
+                               Fill="{StaticResource PrimaryGreenBrush}"/>
+
+                    <TextBlock Text="Welcome to PhysioCenter – Khattab Clinic (079-2533575)"
+                               Foreground="Black"
+                               FontSize="16"/>
+
+                    <Button Content="Learn More"
+                            Margin="0,40,0,0"
+                            Width="200"
+                            Style="{StaticResource PrimaryButtonStyle}"/>
+                </StackPanel>
+
+                <!-- نموذج تسجيل الدخول -->
+                <Border Grid.Column="1"
+                        CornerRadius="30"
+                        Background="#CC000000"
+                        Margin="30"
+                        Padding="30">
+                    <StackPanel>
+
+                        <TextBlock Text="تسجيل الدخول"
+                                   FontSize="26"
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   Margin="0,0,0,10"/>
+
+                        <Rectangle Height="3"
+                                   Fill="{StaticResource PrimaryGreenBrush}"
+                                   Margin="0,0,0,24"/>
+
+                        <TextBlock Text="اسم المستخدم"
+                                   Foreground="White"
+                                   Margin="0,0,0,4"/>
+
+                        <TextBox x:Name="UsernameBox"
+                                 Height="34"
+                                 FontSize="14"
+                                 Padding="8"
+                                 Background="#E6FFFFFF"
+                                 BorderThickness="0"
+                                 Margin="0,0,0,16"/>
+
+                        <TextBlock Text="كلمة المرور"
+                                   Foreground="White"
+                                   Margin="0,0,0,4"/>
+
+                        <PasswordBox x:Name="PasswordBox"
+                                     Height="34"
+                                     FontSize="14"
+                                     Padding="8"
+                                     Background="#FFE0E0E0"
+                                     BorderThickness="0"
+                                     Margin="0,0,0,24"/>
+
+                        <!-- زر الدخول مع Template لتحقيق CornerRadius -->
+                        <Button Click="LoginButton_Click"
+                                Margin="0 20 0 0"
+                                FontSize="18"
+                                Cursor="Hand"
+                                HorizontalAlignment="Stretch"
+                                Height="48"
+                                BorderThickness="0">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="10"
+                                            Background="#0A6ABF"
+                                            Padding="12">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          Content="دخول"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <TextBlock x:Name="ErrorTextBlock"
+                                   Foreground="OrangeRed"
+                                   Margin="0 12 0 0"
+                                   TextWrapping="Wrap"
+                                   FontSize="14"
+                                   HorizontalAlignment="Center"/>
+
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>
